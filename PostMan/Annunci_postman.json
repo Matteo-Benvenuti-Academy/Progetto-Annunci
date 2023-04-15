@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "dfbb16db-a0e8-4b86-b86f-ca979037e864",
+		"_postman_id": "6c65df14-7102-41fd-8fd0-3c68484ad9ab",
 		"name": "Annunci",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -39,7 +39,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/Annunci/utente/signUp",
+					"raw": "http://localhost:8080/Annunci/utente/registrati",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -48,7 +48,7 @@
 					"path": [
 						"Annunci",
 						"utente",
-						"signUp"
+						"registrati"
 					]
 				}
 			},
@@ -69,7 +69,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/Annunci/utente/signUp",
+					"raw": "http://localhost:8080/Annunci/utente/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -78,7 +78,88 @@
 					"path": [
 						"Annunci",
 						"utente",
-						"signUp"
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAnnunciUtente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Matteo\",\n    \"pass\": \"1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/Annunci/utente/listaAnnunci",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Annunci",
+						"utente",
+						"listaAnnunci"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertAnnuncio",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"titolo\": \"Annuncio Inserito 1 \",\n    \"testo\": \"Descrizione Annuncio inserito 1\",\n    \"utente\": {\n        \"username\": \"Matteo\",\n        \"pass\": \"1234\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/Annunci/utente/creaAnnuncio",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Annunci",
+						"utente",
+						"creaAnnuncio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delateAnnuncio",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Annunci/utente/creaAnnuncio",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Annunci",
+						"utente",
+						"creaAnnuncio"
 					]
 				}
 			},
