@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Annunci.dto.AnnuncioDto;
 import com.Annunci.models.Response;
 import com.Annunci.services.AnnuncioService;
+import com.Annunci.utils.DataSorter;
 
 @RestController
 @RequestMapping("Annunci")
@@ -24,11 +25,11 @@ public class AnnuncioController {
 
     @GetMapping
     public Response findAll(){
-        List<AnnuncioDto> stu = service.findAll();
+        List<AnnuncioDto> annunci = DataSorter.sort(service.findAll());
 		
-		if(stu==null)
+		if(annunci==null)
 			new Response("ko");
 		
-		return new Response("ok",stu);  
+		return new Response("ok",annunci);  
     }
 }

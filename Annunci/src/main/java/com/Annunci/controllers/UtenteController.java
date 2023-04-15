@@ -14,6 +14,7 @@ import com.Annunci.dto.AnnuncioDto;
 import com.Annunci.dto.UtenteDto;
 import com.Annunci.models.Response;
 import com.Annunci.services.UtenteService;
+import com.Annunci.utils.DataSorter;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -29,10 +30,10 @@ public class UtenteController {
 	public Response insert(@RequestBody UtenteDto utente) {
 		
 		if( utente == null ||
-            utente.getUsername() == null || utente.getUsername().isBlank() ||
-            utente.getPass() == null || utente.getPass().isBlank() ||
-            utente.getTelefono() == null || utente.getTelefono().isBlank() ||
-            utente.getEmail() == null || utente.getEmail().isBlank())
+            utente.getUsername() == null || utente.getUsername().isBlank() || utente.getUsername().contains(" ") ||
+            utente.getPass() == null || utente.getPass().isBlank() || utente.getPass().contains(" ") ||
+            utente.getTelefono() == null || utente.getTelefono().isBlank() || utente.getTelefono().contains(" ") ||
+            utente.getEmail() == null || utente.getEmail().isBlank() || utente.getUsername().contains(" "))
 			
 			return new Response("ko");
 
@@ -64,7 +65,7 @@ public class UtenteController {
 		if(utenteLogato == null)
 			return new Response("ko");
 
-		List<AnnuncioDto> myAnnunci = service.findAnnunciUtente(utenteLogato);
+		List<AnnuncioDto> myAnnunci = DataSorter.sort(service.findAnnunciUtente(utenteLogato));
 
 		if (myAnnunci == null)
 			return new Response("ko");
