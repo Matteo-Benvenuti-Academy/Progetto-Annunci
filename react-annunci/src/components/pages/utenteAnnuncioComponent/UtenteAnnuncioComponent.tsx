@@ -21,7 +21,9 @@ function UtenteAnnuncioComponent({annuncio,delateAnnuncio}:Props) {
             <Card.Body>
             
                 <Card.Title className='display-6'>{annuncio.titolo}</Card.Title>
-            
+
+                <br />
+                
                 <Card.Text>
                     {annuncio.testo}
                 </Card.Text>

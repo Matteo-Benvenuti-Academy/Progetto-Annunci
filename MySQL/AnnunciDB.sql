@@ -22,11 +22,11 @@ CREATE TABLE Annuncio(
 
 INSERT INTO utente(username, pass, email, telefono) VALUES
 ('Matteo','1234','matben32@gmail.com','3890036943'),
-('Valerione','1234','valerio@gmail.com','3890036943');
+('Valerione','1234','valerio@gmail.com','3471786943');
 
 INSERT INTO annuncio(codice, titolo, testo, utenteRIF) VALUES
-('1234','ann 1',"Descrizione 1",1),
-('Stanza2','STA2',"Descrizione 2",2);
+('COD1','Vendo La bicicletta',"Mezzo in buone codizioni per essere stata usata durante la prima guerra mondiale",1),
+('COD2','Cerco insegnante eclipse',"Cerco persona che mi insegni ad installare Eclipse",2);
 
 SELECT * FROM Annuncio 
 	JOIN Utente ON Utente.utenteID=Annuncio.utenteRIF;

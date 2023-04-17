@@ -11,7 +11,9 @@ function AnnuncioComponent({titolo,testo,publicazione,utente}:Annuncio){
             <Card.Body>
             
                 <Card.Title className='display-6'>{titolo}</Card.Title>
-            
+
+                <br />
+
                 <Card.Text>
                     {testo}
                 </Card.Text>

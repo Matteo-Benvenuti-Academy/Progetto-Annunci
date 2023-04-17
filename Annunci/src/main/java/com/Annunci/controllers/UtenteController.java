@@ -26,7 +26,7 @@ public class UtenteController {
     @Autowired
     UtenteService service;
 
-	@PostMapping("registrati")
+	@PostMapping("/signUp")
 	public Response insert(@RequestBody UtenteDto utente) {
 		
 		if( utente == null ||
@@ -57,7 +57,7 @@ public class UtenteController {
 	}
 
 
-	@PostMapping("listaAnnunci")
+	@PostMapping("/annunci")
 	public Response findAnnunciUtente(@RequestBody UtenteDto utenteDto, HttpServletRequest request){
 
 		UtenteDto utenteLogato = loginBySessionOrCredential(utenteDto,request);
@@ -73,7 +73,7 @@ public class UtenteController {
 		return new Response("ok",myAnnunci);
 	}
 
-	@PostMapping("creaAnnuncio")
+	@PostMapping("crea/annuncio")
 	public Response saveAnnuncioUtente(@RequestBody AnnuncioDto annuncioDto, HttpServletRequest request){
 
 		UtenteDto utenteDto = annuncioDto.getUtente();
@@ -91,7 +91,7 @@ public class UtenteController {
 		return new Response("ok",annuncioSalvato);
 	}
 
-	@DeleteMapping("rimoviAnnuncio")
+	@DeleteMapping("rimuovi/annuncio")
 	public Response delateAnnuncioUtente(@RequestBody AnnuncioDto annuncioDto, HttpServletRequest request){
 
 		UtenteDto utenteDto = annuncioDto.getUtente();

@@ -21,8 +21,6 @@ function UserPageComponent() {
 
         if (response === "Errore di accesso")
             return navigate("/")
-
-        refreshAnnunciUtente()
     }
 
 

@@ -4,6 +4,9 @@ import AnnunciContext from './AnnunciContext'
 
 const AnnunciProvider = ({children}) => {
 
+    const baseURL = "http://172.16.237.206:8080/Annunci"
+    
+
     const [annunci, setAnnunci] = useState([]);
     const [annunciUtente,setAnnunciUtente] = useState([]);
     const [logUser,setLogUser] = useState(null)
@@ -32,13 +35,12 @@ const AnnunciProvider = ({children}) => {
     const refreshAnnunciUtente = async () => {
         const annunci = await findAnnunciUtente()
         
-        if (annunci == "Errore di accesso")
+        if (annunci === "Errore di accesso")
         return "Errore di accesso";
         
         if (!annunci)
         return setAnnunciUtente([])
         
-        console.log([...annunci])
         return setAnnunciUtente( annunciUtente => [...annunci])
 
     }
@@ -47,6 +49,7 @@ const AnnunciProvider = ({children}) => {
         const annuncioCancellato = await daleteAnnuncio(codice)
         if (annuncioCancellato === "Errore di accesso")
             return "Errore di accesso"
+        refreshAnnunciUtente()
     }
 
     async function daleteAnnuncio(codice){
@@ -54,7 +57,7 @@ const AnnunciProvider = ({children}) => {
             return "Errore di accesso"
         
 
-        axios.delete("http://localhost:8080/Annunci/utente/rimoviAnnuncio",{
+        return axios.delete( baseURL + "/utente/rimuovi/annuncio",{
             data:{
                 codice,
                 utente:logUser
@@ -71,7 +74,7 @@ const AnnunciProvider = ({children}) => {
         if(!logUser)
             return "Errore di accesso"
 
-        return axios.post("http://localhost:8080/Annunci/utente/listaAnnunci",logUser)
+        return axios.post( baseURL +  "/utente/annunci",logUser)
         .then((response) =>{
             if(response.data.status === "ok")
                 return response.data.data
@@ -79,7 +82,7 @@ const AnnunciProvider = ({children}) => {
     }
     
     async function findAllAnnunci(){
-        return axios.get("http://localhost:8080/Annunci")
+        return axios.get( baseURL)
         .then((response) =>{
             if(response.data.status === "ok")
                 return response.data.data
@@ -87,7 +90,7 @@ const AnnunciProvider = ({children}) => {
     }
     
     async function userLogin(username,pass){
-        return axios.post("http://localhost:8080/Annunci/utente/login",{
+        return axios.post( baseURL +  "/utente/login",{
             username,
             pass
         })
@@ -102,7 +105,7 @@ const AnnunciProvider = ({children}) => {
     }
 
     async function userSignUp(username,pass,email,telefono) {
-        return axios.post("http://localhost:8080/Annunci/utente/registrati",{
+        return axios.post( baseURL + "/utente/signUp",{
             username,
             pass,
             email,
@@ -122,7 +125,7 @@ const AnnunciProvider = ({children}) => {
         if(!logUser)
             return "Errore di accesso"
         
-        return axios.post("http://localhost:8080/Annunci/utente/creaAnnuncio",{
+        return axios.post( baseURL +  "/utente/crea/annuncio",{
             titolo,
             testo,
             utente:logUser

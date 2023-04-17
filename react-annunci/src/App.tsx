@@ -1,8 +1,8 @@
 import React from 'react';
 import AnnunciProvider from './components/context/AnnunciProvider';
-import { BrowserRouter, Link, Route, Router, Routes } from 'react-router-dom'
+import { BrowserRouter,Route, Routes } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.css"
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container} from 'react-bootstrap';
 import NavbarComponent from './components/navbarComponent/NavbarComponent';
 import SignUpComponent from './components/pages/signUpComponent/SignUpComponent';
 import UserPageComponent from './components/pages/userPageComponent/UserPageComponent';
